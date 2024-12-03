@@ -1,24 +1,24 @@
 // import { FormField, FormItem, FormMessage } from "@/components/ui/form";
-// import { styleList } from "@/config/product-options-config";
+// import { stonesList } from "@/config/product-options-config";
 // import { useFormContext } from "react-hook-form";
-// import StyleCheckbox from "./StyleCheckbox";
+// import StonesCheckbox from "./StonesCheckbox";
 
-// const StyleSection = () => {
+// const StonesSection = () => {
 //   const { control } = useFormContext();
 
 //   return (
 //     <div className="">
 //       <div className="">
-//         <h2 className="text-16sm font-inter font-normal uppercase">Styles</h2>
+//         <h2 className="text-16sm font-inter font-normal uppercase">Stones</h2>
 //       </div>
 //       <FormField
 //         control={control}
-//         name="style"
+//         name="stones"
 //         render={({ field }) => (
 //           <FormItem>
-//             <div className="flex flex-wrap justify-between gap-y-4">
-//               {styleList.map((styleItem) => (
-//                 <StyleCheckbox style={styleItem} field={field} />
+//             <div className="flex flex-wrap justify-start gap-4">
+//               {stonesList.map((stonesItem) => (
+//                 <StonesCheckbox stones={stonesItem} field={field} />
 //               ))}
 //             </div>
 //             <FormMessage />
@@ -29,4 +29,4 @@
 //   );
 // };
 
-// export default StyleSection;
+// export default StonesSection;

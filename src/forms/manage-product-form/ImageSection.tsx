@@ -13,20 +13,20 @@ const ImageSection = () => {
   const existingImageUrl = watch("imageUrl");
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <div>
         <h2 className="text-16sm font-inter font-normal uppercase">Image</h2>
       </div>
 
       <div className="flex flex-col gap-8">
-        {existingImageUrl && (
+        {/* {existingImageUrl && (
           <AspectRatio ratio={16 / 9}>
             <img
               src={existingImageUrl}
               className="rounded-md object-cover h-full w-full"
             />
           </AspectRatio>
-        )}
+        )} */}
         <FormField
           control={control}
           name="imageFile"
@@ -34,7 +34,7 @@ const ImageSection = () => {
             <FormItem className="font-inter text-16sm font-normal uppercase">
               <FormControl>
                 <Input
-                  className="bg-white rounded-none"
+                  className="bg-white rounded-none text-14sm uppercase"
                   type="file"
                   accept=".jpg, .jpeg, .png"
                   onChange={(event) =>

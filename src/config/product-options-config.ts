@@ -1,13 +1,3 @@
-export const styleList = [
-  "Fine",
-  "Contemporary",
-  "Vintage",
-  "Eclectic",
-  "Romantic",
-  "Ethnic",
-  "Artisanal",
-];
-
 export const materialList = [
   "Silver",
   "Gold",
@@ -17,7 +7,7 @@ export const materialList = [
 ];
 
 export const stoneList = [
-  "None",
+  "Plain",
   "Diamond",
   "Ruby",
   "Sapphire",
@@ -25,4 +15,15 @@ export const stoneList = [
   "Amethyst",
   "Tanzanite",
 ];
+
+export const categoryList = ["necklaces", "rings", "bracelets", "earrings"];
+
 export const statusList = ["New Arrival", "Bestseller"];
+
+// export const stonesList = [
+//   "Diamond",
+//   "Ruby",
+//   "Sapphire",
+//   "Emerald",
+//   "Amethyst",
+// ];

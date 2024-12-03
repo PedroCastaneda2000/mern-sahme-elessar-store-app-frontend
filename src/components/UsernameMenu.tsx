@@ -24,7 +24,7 @@ const UsernameMenu = () => {
         to="/user-profile"
         className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
       >
-        User Profile
+        Profile
       </Link>
 
       <Button

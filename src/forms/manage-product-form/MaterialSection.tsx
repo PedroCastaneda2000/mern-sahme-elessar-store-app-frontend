@@ -26,7 +26,7 @@ const MaterialSection = () => {
         name="material"
         render={({ field }) => (
           <FormItem>
-            <div>
+            <div className="flex flex-col gap-2">
               <FormLabel className="font-inter text-16sm font-normal uppercase">
                 Material
               </FormLabel>

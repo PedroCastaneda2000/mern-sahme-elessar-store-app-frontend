@@ -6,6 +6,8 @@ import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import ManageProductPage from "./pages/ManageProductPage";
+import SearchPage from "./pages/SearchPage";
+import CollectionPage from "./pages/CollectionPage";
 
 const AppRoutes = () => {
   return (
@@ -19,7 +21,24 @@ const AppRoutes = () => {
         }
       />
 
-      <Route path="/auth-callback" element={<AuthCallbackPage />}></Route>
+      <Route path="/auth-callback" element={<AuthCallbackPage />} />
+      <Route
+        path="/search/:category"
+        element={
+          <Layout showHero={false}>
+            <SearchPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/products"
+        element={
+          <Layout showHero={false}>
+            <CollectionPage />
+          </Layout>
+        }
+      />
 
       <Route element={<ProtectedRoute />}>
         <Route

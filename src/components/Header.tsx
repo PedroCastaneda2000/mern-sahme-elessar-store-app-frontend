@@ -3,9 +3,9 @@ import MainNav from "./MainNav";
 import MainNavRight from "./MainNavRight";
 const Header = () => {
   return (
-    <div className="bg-white border-b-gray-200 w-full border-b">
-      <div className=" container flex justify-between items-center mx-auto px-[5%] h-16 ">
-        <div className="md:w-12 ">
+    <div className="sticky z-10 top-0 bg-white border-b-gray-200 w-full border-b">
+      <div className="container flex justify-between items-center mx-auto px-[5%] h-16 ">
+        <div>
           <MainNav />
         </div>
         <Link
@@ -14,7 +14,7 @@ const Header = () => {
         >
           sahme elessar
         </Link>
-        <div className="md:w-12 ">
+        <div>
           <MainNavRight />
         </div>
       </div>

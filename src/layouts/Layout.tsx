@@ -12,6 +12,7 @@ const Layout = ({ children, showHero = false }: Props) => {
     <div className="flex flex-col min-h-screen">
       {showHero && <Hero />}
       <Header />
+
       <div className="container mx-auto px-[5%] flex-1 py-10">{children}</div>
       <Footer />
     </div>

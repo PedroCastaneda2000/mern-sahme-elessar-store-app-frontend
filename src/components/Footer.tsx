@@ -63,7 +63,7 @@ const Footer = () => {
               <h2>Sahme</h2>
               <h2>Elessar</h2>
             </div>
-            <div className="flex flex-col md:hidden bg-red-200 items-center w-full text-32md font-medium font-serif uppercase">
+            <div className="flex flex-col md:hidden items-center w-full text-32md font-medium font-serif uppercase">
               <h2>Sahme</h2>
               <h2>Elessar</h2>
             </div>

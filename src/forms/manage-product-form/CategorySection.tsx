@@ -11,42 +11,43 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { stoneList } from "@/config/product-options-config";
+import { categoryList } from "@/config/product-options-config";
 import { useFormContext } from "react-hook-form";
 
-const StoneSection = () => {
-  const { control, setValue, watch } = useFormContext();
+const CategorySection = () => {
+  const { control, setValue, watch } = useFormContext(); // Watch the form data and set value
 
-  const selectedStone = watch("stone");
+  const selectedCategory = watch("category"); // Watch the material value
+
   return (
     <div>
       <FormField
         control={control}
-        name="stone"
+        name="category"
         render={({ field }) => (
           <FormItem>
             <div className="flex flex-col gap-2">
               <FormLabel className="font-inter text-16sm font-normal uppercase">
-                Stone
+                category
               </FormLabel>
               <Select
-                value={selectedStone}
+                value={selectedCategory} // Bind the selected value
                 onValueChange={(value) => {
-                  setValue("stone", value);
-                  field.onChange(value);
+                  setValue("category", value); // Update form value on selection change
+                  field.onChange(value); // Update react-hook-form value
                 }}
               >
                 <SelectTrigger className="bg-white rounded-none">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent>
-                  {stoneList.map((stoneItem) => (
+                  {categoryList.map((categoryItem) => (
                     <SelectItem
-                      key={stoneItem}
-                      value={stoneItem}
+                      key={categoryItem}
+                      value={categoryItem}
                       className="uppercase text-16sm"
                     >
-                      {stoneItem}
+                      {categoryItem}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -60,4 +61,4 @@ const StoneSection = () => {
   );
 };
 
-export default StoneSection;
+export default CategorySection;

@@ -11,9 +11,17 @@ import Menu from "../assets/menu-icon.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 import UsernameMenu from "./UsernameMenu";
 import MainNavLinks from "./MainNavLinks";
+import SearchBar, { SearchForm } from "./SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate();
+  const handleSearchSubmit = (searchFormValues: SearchForm) => {
+    navigate({
+      pathname: `/search/${searchFormValues.searchQuery}`,
+    });
+  };
   return (
     <Sheet>
       <SheetTrigger>
@@ -27,12 +35,17 @@ const MainNav = () => {
             <span>Welcome to Sahme Elessar!</span>
           )}
         </SheetTitle>
-        <Separator />
+
         <SheetDescription className="flex flex-col text-16sm text-black gap-4 py-2">
-          <span className="text-12sm font-light font-inter uppercase">
-            Search...
-          </span>
-          <Separator />
+          <div className="flex flex-col gap-2">
+            <Separator />
+            <SearchBar
+              placeHolder="Search by category..."
+              onSubmit={handleSearchSubmit}
+            />
+            <Separator />
+          </div>
+
           <MainNavLinks />
           <Separator />
           <span className="mt-2">

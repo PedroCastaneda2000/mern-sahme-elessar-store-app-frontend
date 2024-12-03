@@ -3,33 +3,33 @@
 // import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 // type Props = {
-//   style: string;
-//   field: ControllerRenderProps<FieldValues, "style">;
+//   stones: string;
+//   field: ControllerRenderProps<FieldValues, "stones">;
 // };
 
-// const StyleCheckbox = ({ style, field }: Props) => {
+// const StonesCheckbox = ({ stones, field }: Props) => {
 //   return (
 //     <FormItem className="flex flex-row gap-2 items-center space-x-1 space-y-0 mt-2">
 //       <FormControl>
 //         <Checkbox
 //           className="bg-white rounded-none"
-//           checked={field.value.includes(style)}
+//           checked={field.value.includes(stones)}
 //           onCheckedChange={(checked) => {
 //             if (checked) {
-//               field.onChange([...field.value, style]);
+//               field.onChange([...field.value, stones]);
 //             } else {
 //               field.onChange(
-//                 field.value.filter((value: string) => value !== style)
+//                 field.value.filter((value: string) => value !== stones)
 //               );
 //             }
 //           }}
 //         />
 //       </FormControl>
 //       <FormLabel className="text-14sm font-inter font-light uppercase">
-//         {style}
+//         {stones}
 //       </FormLabel>
 //     </FormItem>
 //   );
 // };
 
-// export default StyleCheckbox;
+// export default StonesCheckbox;

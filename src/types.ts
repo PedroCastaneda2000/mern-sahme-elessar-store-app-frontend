@@ -31,10 +31,28 @@ export type Product = {
   _id: string;
   name: string;
   price: number;
+  category: string;
   material: string;
   stone: string;
   status: string;
   imageUrl: string;
-  style: string[];
   lastUpdated: string;
+};
+
+export type ProductSearchResponse = {
+  data: Product[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
+};
+
+export type Products = {
+  data: Product[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
 };

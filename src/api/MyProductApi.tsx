@@ -42,7 +42,7 @@ export const useCreateMyProduct = () => {
 
   const createMyProductRequest = async (
     productFormData: FormData
-  ): Promise<Product[]> => {
+  ): Promise<Product> => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/product`, {
@@ -54,7 +54,7 @@ export const useCreateMyProduct = () => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to create restaurant!");
+      throw new Error("Failed to create product!");
     }
 
     return response.json();
@@ -72,7 +72,7 @@ export const useCreateMyProduct = () => {
   }
 
   if (error) {
-    toast.error("Unable to update Product!");
+    toast.error("Unable to create product!");
   }
 
   return { createProduct, isLoading };
@@ -112,11 +112,11 @@ export const useUpdateMyProduct = ({ productId }: Props) => {
   } = useMutation(updateProductRequest);
 
   if (isSuccess) {
-    toast.success("Restaurant Updated");
+    toast.success("Product updated!");
   }
 
   if (error) {
-    toast.error("Unable to update restaurant");
+    toast.error("Unable to update product!");
   }
 
   return { updateProduct, isLoading };

@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import DetailsSection from "./DetailsSection";
-import StyleSection from "./StyleSection";
 import MaterialSection from "./MaterialSection";
 import { Separator } from "@/components/ui/separator";
 import StoneSection from "./StoneSection";
@@ -13,6 +12,10 @@ import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types";
 import { useEffect } from "react";
+import CategorySection from "./CategorySection";
+import PreviewProductCard from "@/components/PreviewProductCard";
+import UnknownProductCard from "@/components/UnknownProductCard";
+import RefreshButton from "@/components/RefreshButton";
 
 const formSchema = z
   .object({
@@ -20,8 +23,11 @@ const formSchema = z
       required_error: "product name is required",
     }),
     price: z.coerce.number({
-      required_error: "delivery price is required",
+      required_error: "price is required",
       invalid_type_error: "must be a valid number",
+    }),
+    category: z.string({
+      required_error: "product name is required",
     }),
     material: z.string({
       message: "please select at least one item",
@@ -32,9 +38,7 @@ const formSchema = z
     status: z.string({
       message: "please select at least one item",
     }),
-    style: z.array(z.string()).nonempty({
-      message: "please select at least one item",
-    }),
+
     imageUrl: z.string().optional(),
     imageFile: z.instanceof(File, { message: "image is required" }).optional(),
   })
@@ -54,9 +58,7 @@ type Props = {
 const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
   const form = useForm<ProductFormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      style: [],
-    },
+    defaultValues: {},
   });
 
   useEffect(() => {
@@ -78,21 +80,16 @@ const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
     const formData = new FormData();
     formData.append("name", formDataJson.name);
     formData.append("price", (formDataJson.price * 100).toString());
+    formData.append("category", formDataJson.category);
     formData.append("material", formDataJson.material);
     formData.append("stone", formDataJson.stone);
     formData.append("status", formDataJson.status);
-    formDataJson.style.forEach((style, index) => {
-      formData.append(`style[${index}]`, style);
-    });
+
     if (formDataJson.imageFile) {
       formData.append(`imageFile`, formDataJson.imageFile);
     }
-
     onSave(formData);
   };
-
-  // const { watch } = useFormContext();
-  // const existingImageUrl = watch("imageUrl");
 
   return (
     <Form {...form}>
@@ -103,25 +100,43 @@ const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
             <span>create and add a new product for your collection</span>
           </FormLabel>
           <Separator />
-          <div className="grid grid-cols-[6fr_2fr] gap-12">
-            <div className="flex flex-col gap-4">
+          <div className="grid md:grid-cols-[6fr_2fr] md:gap-12 ">
+            <div className="flex flex-col gap-4 order-last md:order-first">
               <DetailsSection />
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <MaterialSection />
                 <StoneSection />
+                <CategorySection />
                 <StatusSection />
-                <ImageSection />
               </div>
-              <StyleSection />
-              <Separator />
+              <ImageSection />
+              {isLoading ? (
+                <LoadingButton />
+              ) : (
+                <div className="w-full flex justify-center md:justify-start mt-4">
+                  {isLoading ? (
+                    <LoadingButton />
+                  ) : (
+                    <Button
+                      type="submit"
+                      className="bg-black min-w-[224px] h-12 rounded-none text-16sm font-medium font-serif uppercase"
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </div>
+              )}
+              <RefreshButton toLink="/manage-product" />
             </div>
-            <div className="bg-pink-100"></div>
+            <div className="flex justify-end h-[510px]">
+              {product ? (
+                <PreviewProductCard product={product} />
+              ) : (
+                <UnknownProductCard />
+              )}
+            </div>
           </div>
-          {isLoading ? (
-            <LoadingButton />
-          ) : (
-            <Button type="submit">Submit</Button>
-          )}
+          <Separator />
         </div>
       </form>
     </Form>

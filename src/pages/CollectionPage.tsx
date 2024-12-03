@@ -1,15 +1,9 @@
-import { useState } from "react";
-import {
-  useCreateMyProduct,
-  useGetMyProduct,
-  useUpdateMyProduct,
-} from "@/api/MyProductApi";
 import { useGetProducts } from "@/api/ProductApi";
-import ManageProductsGallery from "@/components/ManageProductsGallery";
+import ProductsGallery from "@/components/ProductsGallery";
 import OptionFilterProducts from "@/components/OptionFilterProducts";
 import PaginationSelector from "@/components/PaginationSelector";
-import ManageProductForm from "@/forms/manage-product-form/ManageProductForm";
-import { toast } from "sonner";
+import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
 export type ProductsState = {
   page: number;
@@ -19,28 +13,7 @@ export type ProductsState = {
   selectedCategory: string;
 };
 
-const ManageProductPage = () => {
-  const [productId, setProductId] = useState<string>("");
-
-  const { product } = useGetMyProduct({ productId });
-  const { createProduct, isLoading: isCreateLoading } = useCreateMyProduct();
-
-  const { updateProduct, isLoading: isUpdateLoading } = useUpdateMyProduct({
-    productId,
-  });
-
-  const createProductAndSetId = (formData: FormData) => {
-    createProduct(formData, {
-      onSuccess: (newProduct) => {
-        if (newProduct._id) {
-          setProductId(newProduct._id);
-        }
-      },
-    });
-  };
-
-  const isEditing = !!product;
-
+const CollectionPage = () => {
   const [productsState, setProductsState] = useState<ProductsState>({
     page: 1,
     selectedMaterial: "",
@@ -73,34 +46,27 @@ const ManageProductPage = () => {
     }));
   };
 
-  const handleProductSelect = (productId: string) => {
-    setProductId(productId);
-  };
-
   if (isLoading) {
     return <span>Loading...</span>;
   }
-
   if (!products?.data) {
     return <span>No products found!</span>;
   }
 
   return (
     <div className="flex flex-col gap-4">
-      <ManageProductForm
-        product={product}
-        onSave={isEditing ? updateProduct : createProductAndSetId}
-        isLoading={isCreateLoading || isUpdateLoading}
-      />
+      <div className="flex flex-col gap-6 text-center md:text-start">
+        <h1 className="text-28md md:text-40lg font-normal font-serif tracking-tight uppercase">
+          Collection
+        </h1>
+      </div>
+      <Separator />
       <OptionFilterProducts
         state={productsState}
         onFilterChange={updateFilter}
         onReset={resetFilters}
       />
-      <ManageProductsGallery
-        products={products}
-        onProductSelect={handleProductSelect}
-      />
+      <ProductsGallery products={products} />
       <PaginationSelector
         page={products.pagination.page}
         pages={products.pagination.pages}
@@ -110,4 +76,4 @@ const ManageProductPage = () => {
   );
 };
 
-export default ManageProductPage;
+export default CollectionPage;
