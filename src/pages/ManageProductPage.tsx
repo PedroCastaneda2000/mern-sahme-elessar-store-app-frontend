@@ -9,7 +9,6 @@ import ManageProductsGallery from "@/components/ManageProductsGallery";
 import OptionFilterProducts from "@/components/OptionFilterProducts";
 import PaginationSelector from "@/components/PaginationSelector";
 import ManageProductForm from "@/forms/manage-product-form/ManageProductForm";
-import { toast } from "sonner";
 
 export type ProductsState = {
   page: number;

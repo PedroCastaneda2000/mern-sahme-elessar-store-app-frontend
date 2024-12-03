@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import placeholderImage from "../assets/ui_image_placeholder 1.svg";
 
 const HomePage = () => {

@@ -1,4 +1,3 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
   FormControl,
   FormField,
@@ -9,8 +8,7 @@ import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
 
 const ImageSection = () => {
-  const { control, watch } = useFormContext();
-  const existingImageUrl = watch("imageUrl");
+  const { control } = useFormContext();
 
   return (
     <div className="flex flex-col gap-2">
