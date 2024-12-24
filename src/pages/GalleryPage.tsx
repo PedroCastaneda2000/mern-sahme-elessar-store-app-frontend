@@ -57,7 +57,7 @@ const CollectionPage = () => {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-6 text-center md:text-start">
         <h1 className="text-28md md:text-40lg font-normal font-serif tracking-tight uppercase">
-          Collection
+          The Gallery
         </h1>
       </div>
       <Separator />

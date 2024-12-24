@@ -25,15 +25,23 @@ const formSchema = z.object({
   country: z.string().min(1, "Country is required"),
 });
 
-type UserFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
+  title?: string;
+  buttonPlaceholder?: string;
 };
 
-const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
+const UserProfileForm = ({
+  onSave,
+  isLoading,
+  currentUser,
+  title = "User Profile",
+  buttonPlaceholder = "Submit",
+}: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
 
@@ -48,11 +56,11 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className="bg-gray-100 flex flex-col px-4 py-12 md:px-12 md:py-12 gap-4"
+        className="bg-gray-50 flex flex-col px-4 py-12 md:px-12 md:py-12 gap-4"
       >
         <div className="flex flex-col items-center md:items-start gap-4">
           <h2 className="text-28md md:text-40lg font-medium font-serif uppercase">
-            User Profile
+            {title}
           </h2>
           <FormDescription className="text-[#333333] text-12sm font-light font-inter uppercase">
             View and change your profile information here.
@@ -163,9 +171,9 @@ const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
           ) : (
             <Button
               type="submit"
-              className="bg-black min-w-[224px] h-12 rounded-none text-16sm font-medium font-serif uppercase"
+              className="bg-black min-w-[224px] h-11 rounded-none text-16sm font-medium font-serif"
             >
-              Submit
+              {buttonPlaceholder}
             </Button>
           )}
         </div>

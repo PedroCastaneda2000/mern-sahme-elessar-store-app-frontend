@@ -22,10 +22,11 @@ const MainNav = () => {
       pathname: `/search/${searchFormValues.searchQuery}`,
     });
   };
+
   return (
     <Sheet>
       <SheetTrigger>
-        <img className="w-4 h-4" src={Menu} />
+        <img className="w-4 h-4 md:w-5 md:h-5" src={Menu} />
       </SheetTrigger>
       <SheetContent side="left" className="space-y-4">
         <SheetTitle className="text-16sm font-medium font-serif ">

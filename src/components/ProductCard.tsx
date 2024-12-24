@@ -9,7 +9,7 @@ type Props = {
 const ProductCard = ({ product }: Props) => {
   return (
     <Link
-      to={`/detail/${product._id}`}
+      to={`/details/${product._id}`}
       className="grid grid-rows-[7fr_1fr] gap-3 md:gap-4 group min-w-[168px] md:min-w-[264px] h-[273px] md:h-[510px] "
     >
       <AspectRatio ratio={3 / 2}>

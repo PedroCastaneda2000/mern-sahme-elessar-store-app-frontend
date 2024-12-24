@@ -1,6 +1,6 @@
-import { ProductsState } from "@/pages/CollectionPage";
+import { ProductsState } from "@/pages/GalleryPage";
 import { SearchState } from "@/pages/SearchPage";
-import { Products, ProductSearchResponse } from "@/types";
+import { Product, Products, ProductSearchResponse } from "@/types";
 import { useQuery } from "react-query";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -82,4 +82,28 @@ export const useGetProducts = (productsState: ProductsState) => {
   );
 
   return { products, isLoading };
+};
+
+export const useGetProduct = (productId?: string) => {
+  const getProductByIdRequest = async (): Promise<Product> => {
+    const response = await fetch(
+      `${API_BASE_URL}/api/product/details/${productId}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to get product!");
+    }
+
+    return response.json();
+  };
+
+  const { data: product, isLoading } = useQuery(
+    "fetchProduct",
+    getProductByIdRequest,
+    {
+      enabled: !!productId,
+    }
+  );
+
+  return { product, isLoading };
 };

@@ -15,7 +15,6 @@ const MainNavLinks = () => {
   return (
     <div className="flex flex-col gap-4 text-16sm font-light font-inter">
       <Link
-        onClick={() => handleReload("/products")}
         className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
         to="/products"
       >
