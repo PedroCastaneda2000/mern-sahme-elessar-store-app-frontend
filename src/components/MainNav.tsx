@@ -31,7 +31,7 @@ const MainNav = () => {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="bg-main-secondary w-[20%] min-w-[272px] space-y-4 px-4"
+        className="bg-main-secondary h-screen w-[20%] min-w-[272px] space-y-4 px-4"
       >
         <SheetTitle className="text-14sm xl:text-16sm text-color-light font-serif font-medium">
           {isAuthenticated ? (
