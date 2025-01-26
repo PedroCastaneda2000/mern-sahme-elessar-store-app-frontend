@@ -27,6 +27,7 @@ const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
             className="font-inter text-14sm xl:text-16sm font-normal"
           >
             <PaginationPrevious
+              className="pl-0.5"
               href="#"
               onClick={() => onPageChange(page - 1)}
             />
@@ -54,7 +55,11 @@ const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
             key="next"
             className="font-inter text-14sm xl:text-16sm font-normal"
           >
-            <PaginationNext href="#" onClick={() => onPageChange(page + 1)} />
+            <PaginationNext
+              className="pr-0"
+              href="#"
+              onClick={() => onPageChange(page + 1)}
+            />
           </PaginationItem>
         )}
       </PaginationContent>
