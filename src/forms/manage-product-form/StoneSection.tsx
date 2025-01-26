@@ -26,7 +26,7 @@ const StoneSection = () => {
         render={({ field }) => (
           <FormItem>
             <div className="flex flex-col gap-2">
-              <FormLabel className="font-inter text-16sm font-normal uppercase">
+              <FormLabel className="font-inter text-14sm xl:text-16sm font-normal uppercase">
                 Stone
               </FormLabel>
               <Select
@@ -36,15 +36,15 @@ const StoneSection = () => {
                   field.onChange(value);
                 }}
               >
-                <SelectTrigger className="bg-white rounded-none">
+                <SelectTrigger className="text-color-dark border-main-outline text-14sm xl:text-16sm font-inter bg-main-lighter h-11 rounded-sm border-opacity-10 italic">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-main-lighter rounded-sm">
                   {stoneList.map((stoneItem) => (
                     <SelectItem
                       key={stoneItem}
                       value={stoneItem}
-                      className="uppercase text-16sm"
+                      className="text-14sm xl:text-16sm font-inter italic"
                     >
                       {stoneItem}
                     </SelectItem>

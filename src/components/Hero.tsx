@@ -1,16 +1,15 @@
-import hero from "../assets/ui_image_placeholder 1.svg";
+import hero from "../assets/rose-gold-ruby-ring-canvas.png";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div>
-      {/* <img src={hero} className="w-full h-screen object-cover" /> */}
-      <img src={hero} className="w-full h-[calc(100vh-64px)] object-cover" />
-      <div className="absolute z-10 top-[70%] left-1/2 transform -translate-x-1/2">
+    <div className="relative">
+      <img src={hero} className="h-[calc(100vh-64px)] w-full object-cover" />
+      <div className="absolute left-1/2 top-[70%] z-50 -translate-x-1/2 transform">
         <Button
           asChild
-          className="bg-white min-w-[224px] h-12 rounded-none text-black text-16sm font-medium font-serif uppercase hover:bg-gray-50"
+          className="text-14sm xl:text-16sm bg-button-primary hover:bg-button-primary-hover text-color-light h-11 min-w-[224px] rounded-sm font-serif font-medium"
         >
           <Link to="/products">View Gallery</Link>
         </Button>

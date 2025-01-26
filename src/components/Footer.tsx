@@ -1,84 +1,98 @@
-import { Separator } from "@radix-ui/react-separator";
 import { Input } from "./ui/input";
+import { Separator } from "./ui/separator";
 
 const Footer = () => {
   return (
-    <div className="bg-[#333333] py-10 text-white">
-      <div className="container mx-auto px-[5%] flex flex-col justify-between items-center gap-16">
-        <div className="w-full justify-between">
-          <div className="flex md:flex-row-reverse flex-col justify-center md:justify-between gap-12 ">
-            <form className="flex flex-col text-14lk font-light font-inter uppercase gap-4 text-white max-width-none md:max-w-[408px]">
-              <div className="flex flex-col gap-4 text-center md:text-start ">
-                <h1 className="text-normal text-24md font-serif font-normal uppercase ">
-                  enjoy $10 off your first order.
-                </h1>
-                <p className="text-14sm text-light  font-inter ">
-                  Join us for plant tips, exclusive offers, and a 10% welcome
-                  discount.
-                </p>
-              </div>
-              <fieldset className=" bg-white text-black">
-                <Input
-                  className="bg-white rounded-none text-12sm font-light font-inter uppercase"
-                  maxLength={40}
-                  type="email"
-                  placeholder="enter your email"
-                />
-              </fieldset>
-            </form>
-            <div className=" flex flex-col items-center md:items-start md:flex-row gap-8">
-              <div className="flex flex-col items-center md:items-start text-14lk  font-light font-inter uppercase gap-2 text-gray-300 md:w-1/3">
-                <h1 className="text-white text-24md font-normal font-serif">
-                  Resources
-                </h1>
-                <span>size guide</span>
-                <span>care guide</span>
-                <span>how to wear</span>
-                <span>warranty</span>
-              </div>
-              <div className="flex flex-col items-center md:items-start text-14lk  font-light font-inter uppercase gap-2 text-gray-300 md:w-1/3">
-                <h1 className="text-white text-24md font-normal font-serif">
-                  Services
-                </h1>
-                <span>track my order</span>
-                <span>shipping & production</span>
-                <span>resizing & repairs</span>
-                <span>return policy</span>
-              </div>
-              <div className="flex flex-col items-center md:items-start text-14lk font-light font-inter uppercase gap-2 text-gray-300 md:w-1/3">
-                <h1 className="text-white text-24md font-normal font-serif">
-                  About
-                </h1>
-                <span>terms of service</span>
-                <span>privacy policy</span>
-                <span>contact us</span>
-                <span>general faqs</span>
-              </div>
+    <div className="bg-main-primary flex w-full flex-col gap-4 pb-12 pt-12 xl:pb-16">
+      <div className="container mx-auto flex flex-col items-center gap-24 px-[5%]">
+        <div
+          id="1-2"
+          className="flex w-full flex-col items-center gap-6 xl:flex-row-reverse xl:items-start xl:justify-between"
+        >
+          <form
+            id="1"
+            className="text-14sm font-inter text-color-light flex flex-col justify-center gap-6 text-center font-light md:w-[358px] xl:w-[408px] xl:text-start"
+          >
+            <div className="txt- flex flex-col gap-4">
+              <h1 className="text-20md xl:text-28md font-serif font-normal">
+                Enjoy $10 off your first order
+              </h1>
+              <p className="text-14sm xl:text-16sm text-normal font-inter font-normal italic">
+                Join our newsletter for exclusive offers, early launch access,
+                and more.
+              </p>
+            </div>
+
+            <fieldset className="rounded-sm">
+              <Input
+                className="text-14sm xl:text-16sm font-inter text-color-dark bg-main-lighter h-11 rounded-sm font-normal italic"
+                maxLength={40}
+                type="email"
+                placeholder="Enter your Email"
+              />
+            </fieldset>
+          </form>
+          <div
+            id="2"
+            className="text-color-light flex w-full max-w-[684px] flex-col items-center justify-center gap-6 md:flex-row xl:justify-start"
+          >
+            <div className="text-14sm xl:text-16sm font-inter t flex flex-col items-center gap-2 font-normal capitalize italic md:w-1/3 xl:items-start">
+              <h1 className="text-20md xl:text-28md font-serif font-normal not-italic">
+                Resources
+              </h1>
+              <span>size guide</span>
+              <span>care guide</span>
+              <span>how to wear</span>
+              <span>warranty</span>
+            </div>
+            <div className="text-14sm xl:text-16sm font-inter flex flex-col items-center gap-2 text-center font-normal capitalize italic md:w-1/3 xl:items-start">
+              <h1 className="text-20md xl:text-28md font-serif font-normal not-italic">
+                Services
+              </h1>
+              <span>track my order</span>
+              <span>shipping & production</span>
+              <span>resizing & repairs</span>
+              <span>return policy</span>
+            </div>
+            <div className="text-14sm xl:text-16sm font-inter flex flex-col items-center gap-2 font-normal capitalize italic md:w-1/3 xl:items-start">
+              <h1 className="text-20md xl:text-28md font-serif font-normal not-italic">
+                About
+              </h1>
+              <span>terms of service</span>
+              <span>privacy policy</span>
+              <span>contact us</span>
+              <span>general faqs</span>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4 w-full">
-          <div className="w-full flex flex-col items-center gap-2">
-            <div className="hidden md:flex justify-between w-full text-32md font-medium font-serif uppercase">
-              <h2>Sahme</h2>
-              <h2>Elessar</h2>
-            </div>
-            <div className="flex flex-col md:hidden items-center w-full text-32md font-medium font-serif uppercase">
-              <h2>Sahme</h2>
-              <h2>Elessar</h2>
-            </div>
-            <Separator className="border w-full bg-white" />
+
+        <div id="3" className="text-color-light flex w-full flex-col gap-4">
+          <div className="flex justify-center xl:hidden">
+            <h1 className="text-20md xl:text-28md font-serif font-medium">
+              Ah Sahm Elessar
+            </h1>
           </div>
-          <div className="flex justify-between w-full">
-            <span className="text-14sm text-light font-inter uppercase">
-              ©2025 sahmeelessar.com
-            </span>
-            <span className="hidden md:flex gap-2 text-14sm text-light font-inter uppercase">
-              <p>terms of service</p>
-              <p>privacy policy</p>
-              <p>contact us</p>
-              <p>faqs</p>
-            </span>
+          <div className="hidden justify-between xl:flex">
+            <h1 className="text-20md xl:text-32md font-serif font-medium">
+              Ah Sahm
+            </h1>
+            <h1 className="text-20md xl:text-32md font-serif font-medium">
+              Elessar
+            </h1>
+          </div>
+          <Separator />
+          <div className="flex justify-center xl:justify-between">
+            <p className="font-inter text-14sm font-normal uppercase">
+              ©2025 global.sahmeelessar.com
+            </p>
+            <ul className="text-14sm font-inter hidden gap-4 font-normal uppercase xl:flex">
+              <li>terms of services</li>
+              <li>privacy policy</li>
+              <li>contact us</li>
+              <li>
+                FAQ<span className="lowercase">s</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

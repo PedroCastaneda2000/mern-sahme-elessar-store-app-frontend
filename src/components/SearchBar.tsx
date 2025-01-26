@@ -5,11 +5,11 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
-import Search from "../assets/search-icon.svg";
+import Search from "../assets/search-dark-icon.svg";
 
 const formSchema = z.object({
   searchQuery: z.string({
-    required_error: "Restaurant name is required",
+    required_error: "Search query is required",
   }),
 });
 
@@ -48,7 +48,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`flex w-full flex-row items-center justify-between gap-4 ${
+        className={`border-main-outline flex w-full flex-row items-center justify-between gap-3 rounded-none border-b-[1px] border-t-[1px] border-opacity-10 p-0 shadow-none ${
           form.formState.errors.searchQuery && "border-red-500"
         }`}
       >
@@ -56,12 +56,12 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           control={form.control}
           name="searchQuery"
           render={({ field }) => (
-            <FormItem className="flex-1">
+            <FormItem className="flex-1 items-center justify-center py-3">
               <FormControl>
                 <Input
                   {...field}
                   maxLength={20}
-                  className="border-none shadow-none text-12sm font-light font-inter focus-visible:ring-0 uppercase p-0 rounded-none"
+                  className="text-12sm xl:text-14sm font-none font-inter text-color-dark placeholder:text-color-dark/40 h-auto rounded-none border-none p-0 italic shadow-none focus-visible:ring-0"
                   placeholder={placeHolder}
                 />
               </FormControl>
@@ -72,7 +72,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
           onClick={handleReset}
           type="button"
           variant="outline"
-          className="rounded-none border-none shadow-none text-12sm font-light font-inter uppercase p-0"
+          className="text-12sm xl:text-14sm text-color-dark font-inter rounded-none border-none bg-transparent p-0 font-light italic shadow-none hover:bg-transparent"
         >
           Reset
         </Button>
@@ -80,9 +80,9 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
         <Button
           type="submit"
           variant="outline"
-          className="rounded-none border-none shadow-none text-12sm font-light font-inter p-0"
+          className="h-auto w-auto rounded-none border-none bg-transparent p-0 shadow-none hover:bg-transparent"
         >
-          <img className="hidden md:block w-4 h-4" src={Search} />
+          <img className="size-4 xl:size-5" src={Search} />
         </Button>
       </form>
     </Form>

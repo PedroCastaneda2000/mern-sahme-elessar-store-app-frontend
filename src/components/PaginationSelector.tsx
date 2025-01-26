@@ -20,9 +20,12 @@ const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
   }
   return (
     <Pagination>
-      <PaginationContent>
+      <PaginationContent className="italic">
         {page != 1 && (
-          <PaginationItem>
+          <PaginationItem
+            key="previous"
+            className="font-inter text-14sm xl:text-16sm font-normal"
+          >
             <PaginationPrevious
               href="#"
               onClick={() => onPageChange(page - 1)}
@@ -31,11 +34,15 @@ const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
         )}
 
         {pageNumbers.map((number) => (
-          <PaginationItem>
+          <PaginationItem
+            key={number}
+            className="font-inter text-14sm xl:text-16sm rounded-sm font-normal"
+          >
             <PaginationLink
               href="#"
               onClick={() => onPageChange(number)}
               isActive={page === number}
+              className="focus:bg-main-lighter border-main-outline hover:bg-main-primary hover:text-color-light"
             >
               {number}
             </PaginationLink>
@@ -43,7 +50,10 @@ const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
         ))}
 
         {page !== pageNumbers.length && (
-          <PaginationItem>
+          <PaginationItem
+            key="next"
+            className="font-inter text-14sm xl:text-16sm font-normal"
+          >
             <PaginationNext href="#" onClick={() => onPageChange(page + 1)} />
           </PaginationItem>
         )}

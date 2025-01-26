@@ -7,28 +7,36 @@ const ItemSummary = () => {
   if (!lastAddedItem) return null;
 
   return (
-    <div className="grid grid-cols-[1fr_2fr] gap-4">
+    <div className="flex gap-3">
       <img
         src={lastAddedItem.imageUrl}
-        alt={lastAddedItem.name}
-        className="w-[96px] h-[128px] object-cover"
+        className="w-24 h-32 object-cover rounded-sm md:w-24 md:h-32"
       />
-      <div className="">
-        <span className="font-serif text-16sm font-medium">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-12sm md:text-14sm w-24 font-serif font-medium whitespace-normal break-words xl:text-16sm xl:w-32">
           {lastAddedItem.name}
-        </span>
-        <span className="font-serif text-16sm font-medium"></span>
-        <p></p>
-
-        <p className="text-[#333333] font-serif text-14sm font-medium">
-          Material: <span>{lastAddedItem.material}</span>
-        </p>
-        <p className="text-[#333333] font-serif text-14sm font-medium">
-          Stone: <span>{lastAddedItem.stone}</span>
-        </p>
-        <p className="text-[#333333] font-serif text-14sm font-medium">
-          Subtotal: <span>${(lastAddedItem.price / 100).toFixed(0)} USD</span>
-        </p>
+        </h1>
+        <div className="flex flex-col font-inter font-normal text-12sm md:text-14sm italic xl:text-16sm">
+          <div className="flex gap-1">
+            <p className="w-9">Mat.</p>
+            <span>{lastAddedItem.material}</span>
+          </div>
+          <div className="flex gap-1">
+            <p className="w-9">Stn.</p>
+            <span>{lastAddedItem.stone}</span>
+          </div>
+          <div className="flex gap-1">
+            <p className="w-9">Sz.</p>
+            <span>18"</span>
+          </div>
+          <div className="flex gap-1">
+            <p className="w-9">Tot.</p>
+            <p>
+              ${(lastAddedItem.price / 100).toFixed(0)}{" "}
+              <span className="text-10sm md:text-12sm xl:text-14sm">USD</span>{" "}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

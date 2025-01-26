@@ -15,9 +15,9 @@ import { statusList } from "@/config/product-options-config";
 import { useFormContext } from "react-hook-form";
 
 const StatusSection = () => {
-  const { control, setValue, watch } = useFormContext(); // Watch the form data and set value
+  const { control, setValue, watch } = useFormContext();
 
-  const selectedStatus = watch("status"); // Watch the material value
+  const selectedStatus = watch("status");
 
   return (
     <div>
@@ -27,25 +27,25 @@ const StatusSection = () => {
         render={({ field }) => (
           <FormItem>
             <div className="flex flex-col gap-2">
-              <FormLabel className="font-inter text-16sm font-normal uppercase">
+              <FormLabel className="font-inter text-14sm xl:text-16sm font-normal uppercase">
                 Status
               </FormLabel>
               <Select
-                value={selectedStatus} // Bind the selected value
+                value={selectedStatus}
                 onValueChange={(value) => {
-                  setValue("status", value); // Update form value on selection change
-                  field.onChange(value); // Update react-hook-form value
+                  setValue("status", value);
+                  field.onChange(value);
                 }}
               >
-                <SelectTrigger className="bg-white rounded-none">
+                <SelectTrigger className="text-color-dark border-main-outline text-14sm xl:text-16sm font-inter bg-main-lighter h-11 rounded-sm border-opacity-10 italic">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-main-lighter rounded-sm">
                   {statusList.map((statusItem) => (
                     <SelectItem
                       key={statusItem}
                       value={statusItem}
-                      className="uppercase text-16sm"
+                      className="text-14sm xl:text-16sm font-inter italic"
                     >
                       {statusItem}
                     </SelectItem>

@@ -1,4 +1,4 @@
-import { Form, FormLabel } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import CategorySection from "./CategorySection";
 import PreviewProductCard from "@/components/PreviewProductCard";
 import UnknownProductCard from "@/components/UnknownProductCard";
-import RefreshButton from "@/components/RefreshButton";
+import DeleteButton from "@/components/DeleteButton";
 
 const formSchema = z
   .object({
@@ -52,13 +52,30 @@ type ProductFormData = z.infer<typeof formSchema>;
 type Props = {
   product?: Product;
   onSave: (productProductData: FormData) => void;
+  onDelete: () => void;
   isLoading: boolean;
+  isDeleteLoading: boolean;
 };
 
-const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
+const ManageProductForm = ({
+  onSave,
+  isLoading,
+  product,
+  onDelete,
+  isDeleteLoading,
+}: Props) => {
   const form = useForm<ProductFormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      name: "",
+      price: 1275,
+      category: "",
+      material: "",
+      stone: "",
+      status: "",
+      imageUrl: "",
+      imageFile: undefined,
+    },
   });
 
   useEffect(() => {
@@ -66,14 +83,16 @@ const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
       return;
     }
 
-    const priceFormatted = parseInt((product.price / 100).toFixed(2));
-
-    const updatedProduct = {
-      ...product,
-      price: priceFormatted,
-    };
-
-    form.reset(updatedProduct);
+    form.reset({
+      name: product.name || "",
+      price: product.price ? parseInt((product.price / 100).toFixed(2)) : 0,
+      category: product.category || "",
+      material: product.material || "",
+      stone: product.stone || "",
+      status: product.status || "",
+      imageUrl: product.imageUrl || "",
+      imageFile: undefined,
+    });
   }, [form, product]);
 
   const onSubmit = (formDataJson: ProductFormData) => {
@@ -94,49 +113,53 @@ const ManageProductForm = ({ onSave, isLoading, product }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4">
-          <FormLabel className="flex flex-col gap-2 font-inter font-light text-12sm uppercase">
-            <h1 className="font-serif font-normal text-40lg">manage store</h1>
-            <span>create and add a new product for your collection</span>
-          </FormLabel>
-          <Separator />
-          <div className="grid md:grid-cols-[6fr_2fr] md:gap-12 ">
-            <div className="flex flex-col gap-4 order-last md:order-first">
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-[3fr_2fr] xl:grid-cols-[6.4fr_2fr] xl:gap-12">
+            <div className="order-last flex flex-col gap-4 md:order-first">
               <DetailsSection />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-4">
                 <MaterialSection />
                 <StoneSection />
                 <CategorySection />
                 <StatusSection />
               </div>
               <ImageSection />
-              {isLoading ? (
-                <LoadingButton />
-              ) : (
-                <div className="w-full flex justify-center md:justify-start mt-4">
-                  {isLoading ? (
+              <div className="mt-4 flex w-full gap-3">
+                {isLoading ? (
+                  <LoadingButton />
+                ) : (
+                  <Button
+                    type="submit"
+                    className="text-14sm xl:text-16sm bg-button-primary hover:bg-button-primary-hover h-11 w-full rounded-sm font-serif font-medium md:max-w-[240px]"
+                  >
+                    Submit
+                  </Button>
+                )}
+                {product &&
+                  (isDeleteLoading ? (
                     <LoadingButton />
                   ) : (
-                    <Button
-                      type="submit"
-                      className="bg-black min-w-[224px] h-12 rounded-none text-16sm font-medium font-serif uppercase"
-                    >
-                      Submit
-                    </Button>
-                  )}
-                </div>
-              )}
-              <RefreshButton toLink="/manage-product" />
+                    <DeleteButton onDelete={onDelete} />
+                  ))}
+              </div>
             </div>
-            <div className="flex justify-end h-[510px]">
+            <div className="flex flex-col justify-end gap-6">
               {product ? (
-                <PreviewProductCard product={product} />
+                <PreviewProductCard
+                  product={{
+                    ...product,
+                    name: product?.name || "Unnamed Product?",
+                    price: product?.price || 1275,
+                    category: product?.category || "Unknown Category?",
+                  }}
+                />
               ) : (
                 <UnknownProductCard />
               )}
+              <Separator className="bg-main-outline opacity-10 md:hidden" />
             </div>
           </div>
-          <Separator />
+          <Separator className="bg-main-outline opacity-10" />
         </div>
       </form>
     </Form>

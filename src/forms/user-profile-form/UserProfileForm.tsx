@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { User } from "@/types";
 import { useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const formSchema = z.object({
   email: z.string().optional(),
@@ -39,7 +40,7 @@ const UserProfileForm = ({
   onSave,
   isLoading,
   currentUser,
-  title = "User Profile",
+  title = `User Profile`,
   buttonPlaceholder = "Submit",
 }: Props) => {
   const form = useForm<UserFormData>({
@@ -47,6 +48,9 @@ const UserProfileForm = ({
 
     defaultValues: currentUser,
   });
+
+  const { user } = useAuth0();
+  const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
 
   useEffect(() => {
     form.reset(currentUser);
@@ -56,33 +60,36 @@ const UserProfileForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className="bg-gray-50 flex flex-col px-4 py-12 md:px-12 md:py-12 gap-4"
+        className="bg-main-lighter border-main-outline flex flex-col gap-4 rounded-sm border-[1px] border-opacity-10 px-4 py-12 md:px-12 md:py-12"
       >
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <h2 className="text-28md md:text-40lg font-medium font-serif uppercase">
-            {title}
-          </h2>
-          <FormDescription className="text-[#333333] text-12sm font-light font-inter uppercase">
-            View and change your profile information here.
+        <div className="text-color-dark flex flex-col items-center gap-2 text-center md:items-start md:text-start">
+          <h1 className="text-28md xl:text-40lg font-serif">
+            {user?.email?.trim().toLowerCase() ===
+            ADMIN_EMAIL.trim().toLowerCase()
+              ? "Admin Profile"
+              : `${title}`}
+          </h1>
+          <FormDescription className="font-inter text-14sm xl:text-16sm font-light">
+            Review and update your profile information.
           </FormDescription>
         </div>
 
         <Separator />
 
-        <div className="flex flex-col gap-4">
+        <div className="text-color-dark flex flex-col gap-4">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-16sm font-normal font-inter uppercase">
+                <FormLabel className="text-14sm xl:text-16sm font-inter font-normal uppercase">
                   Email
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     disabled
-                    className="bg-white rounded-none text-16sm font-light font-inter"
+                    className="text-14sm xl:text-16sm font-inter rounded-none bg-white font-normal italic"
                   />
                 </FormControl>
               </FormItem>
@@ -94,13 +101,13 @@ const UserProfileForm = ({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-16sm font-normal font-inter uppercase">
+                <FormLabel className="text-14sm xl:text-16sm font-inter text-color-dark font-normal uppercase">
                   Name
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    className="bg-white rounded-none text-16sm font-light font-inter"
+                    className="text-14sm xl:text-16sm font-inter rounded-none bg-white font-normal italic"
                   />
                 </FormControl>
                 <FormMessage />
@@ -109,19 +116,19 @@ const UserProfileForm = ({
           />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           <FormField
             control={form.control}
             name="addressLine1"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-16sm font-normal font-inter uppercase">
+                <FormLabel className="text-14sm xl:text-16sm font-inter font-normal uppercase">
                   Address
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    className="bg-white rounded-none text-16sm font-light font-inter"
+                    className="text-14sm xl:text-16sm font-inter rounded-none bg-white font-normal italic"
                   />
                 </FormControl>
                 <FormMessage />
@@ -133,13 +140,13 @@ const UserProfileForm = ({
             name="city"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-16sm font-normal font-inter uppercase">
+                <FormLabel className="text-14sm xl:text-16sm font-inter font-normal uppercase">
                   City
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    className="bg-white rounded-none text-16sm font-light font-inter"
+                    className="text-14sm xl:text-16sm font-inter rounded-none bg-white font-normal italic"
                   />
                 </FormControl>
                 <FormMessage />
@@ -151,13 +158,13 @@ const UserProfileForm = ({
             name="country"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel className="text-16sm font-normal font-inter uppercase">
+                <FormLabel className="text-14sm xl:text-16sm font-inter font-normal uppercase">
                   Country
                 </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    className="bg-white rounded-none text-16sm font-light font-inter"
+                    className="text-14sm xl:text-16sm font-inter rounded-none bg-white font-normal italic"
                   />
                 </FormControl>
                 <FormMessage />
@@ -165,13 +172,13 @@ const UserProfileForm = ({
             )}
           />
         </div>
-        <div className="w-full flex justify-center md:justify-start mt-4">
+        <div className="mt-4 flex w-full justify-center md:justify-start">
           {isLoading ? (
             <LoadingButton />
           ) : (
             <Button
               type="submit"
-              className="bg-black min-w-[224px] h-11 rounded-none text-16sm font-medium font-serif"
+              className="text-14sm xl:text-16sm bg-button-primary hover:bg-button-primary-hover h-11 w-full rounded-sm text-center font-serif font-medium md:max-w-[240px]"
             >
               {buttonPlaceholder}
             </Button>

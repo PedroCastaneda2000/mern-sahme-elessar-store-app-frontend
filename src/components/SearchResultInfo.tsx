@@ -1,23 +1,15 @@
-import { Link } from "react-router-dom";
-
 type Props = {
   total: number;
-  category: string;
 };
 
-const SearchResultInfo = ({ total, category }: Props) => {
+const SearchResultInfo = ({ total }: Props) => {
   return (
-    <div className="text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row">
-      <span className="text-14sm font-medium font-serif uppercase">
-        Found {total} Products in the {category} Category
-        <Link
-          to="/"
-          className="ml-1 text-12sm font-medium font-serif uppercase underline"
-        >
-          Change Category
-        </Link>
-      </span>
-      insert sort dropdown here:
+    <div className="flex items-center justify-center md:justify-between">
+      <p className="font-inter text-14sm xl:text-16sm font-light text-black">
+        Searched and uncovered
+        <span className="font-inter font-medium italic"> {total} </span> unique
+        pieces.
+      </p>
     </div>
   );
 };

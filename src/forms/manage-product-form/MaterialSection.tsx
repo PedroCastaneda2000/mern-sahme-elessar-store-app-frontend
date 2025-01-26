@@ -15,10 +15,9 @@ import { materialList } from "@/config/product-options-config";
 import { useFormContext } from "react-hook-form";
 
 const MaterialSection = () => {
-  const { control, setValue, watch } = useFormContext(); // Watch the form data and set value
+  const { control, setValue, watch } = useFormContext();
 
-  const selectedMaterial = watch("material"); // Watch the material value
-
+  const selectedMaterial = watch("material");
   return (
     <div>
       <FormField
@@ -27,25 +26,25 @@ const MaterialSection = () => {
         render={({ field }) => (
           <FormItem>
             <div className="flex flex-col gap-2">
-              <FormLabel className="font-inter text-16sm font-normal uppercase">
+              <FormLabel className="font-inter text-14sm xl:text-16sm font-normal uppercase">
                 Material
               </FormLabel>
               <Select
-                value={selectedMaterial} // Bind the selected value
+                value={selectedMaterial}
                 onValueChange={(value) => {
-                  setValue("material", value); // Update form value on selection change
-                  field.onChange(value); // Update react-hook-form value
+                  setValue("material", value);
+                  field.onChange(value);
                 }}
               >
-                <SelectTrigger className="bg-white rounded-none">
+                <SelectTrigger className="text-color-dark border-main-outline text-14sm xl:text-16sm font-inter bg-main-lighter h-11 rounded-sm border-opacity-10 italic">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="rounded-sm bg-white italic">
                   {materialList.map((materialItem) => (
                     <SelectItem
                       key={materialItem}
                       value={materialItem}
-                      className="uppercase text-16sm"
+                      className="text-14sm xl:text-16sm font-inter italic"
                     >
                       {materialItem}
                     </SelectItem>

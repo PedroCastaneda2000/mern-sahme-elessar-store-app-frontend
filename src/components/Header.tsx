@@ -5,16 +5,16 @@ import ItemAddedNotification from "./ItemAddedNotification";
 const Header = () => {
   return (
     <>
-      <div className="sticky z-50 top-0 bg-white border-b-gray-200 w-full border-b ">
-        <div className="container flex justify-between items-center mx-auto px-[5%] h-16">
+      <div className="bg-main-light border-b-main-outline sticky top-0 z-40 w-full border-b border-opacity-10">
+        <div className="container mx-auto flex h-16 items-center justify-between px-[5%]">
           <div>
             <MainNav />
           </div>
           <Link
             to="/"
-            className="text-24md md:text-32md font-serif tracking-tight font-medium text-black uppercase "
+            className="text-20md xl:text-32md font-regular text-color-dark font-serif tracking-tight"
           >
-            sahme elessar
+            Ah Sahm Elessar
           </Link>
           <div>
             <Link to="/manage-cart">

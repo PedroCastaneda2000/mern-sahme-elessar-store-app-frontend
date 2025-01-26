@@ -37,7 +37,7 @@ export const useSearchProducts = (
     return response.json();
   };
   const { data: results, isLoading } = useQuery(
-    ["searchProducts", searchState],
+    ["searchProducts", searchState, category],
     createSearchRequest,
     {
       enabled: !!category,

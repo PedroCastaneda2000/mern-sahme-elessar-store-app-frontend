@@ -37,7 +37,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
     return (
       <Button
         onClick={onLogin}
-        className="h-11 rounded-none text-center text-16sm font-serif w-full md:max-w-[384px]"
+        className="text-16sm bg-button-primary hover:bg-button-primary-hover h-11 w-full rounded-none text-center font-serif font-medium md:max-w-[384px]"
       >
         Log in to Checkout
       </Button>
@@ -53,12 +53,12 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
       <DialogTrigger asChild>
         <Button
           disabled={disabled}
-          className="h-11 rounded-none text-center text-16sm font-serif w-full md:max-w-[384px]"
+          className="text-14sm xl:text-16sm bg-button-primary hover:bg-button-primary-hover h-11 w-full max-w-[358px] rounded-none text-center font-serif font-medium"
         >
           Go to Checkout
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[960px] md:min-w-[768px] bg-white rounded-none">
+      <DialogContent className="bg-main-lighter max-w-sm rounded-sm p-3 md:max-w-lg xl:max-w-xl">
         <UserProfileForm
           currentUser={currentUser}
           onSave={onCheckout}

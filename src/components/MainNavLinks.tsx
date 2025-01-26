@@ -1,48 +1,44 @@
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const MainNavLinks = () => {
   const navigate = useNavigate();
 
-  const handleReload = (url: string) => {
-    if (window.location.pathname === url) {
-      window.location.reload();
-    } else {
-      navigate(url);
-      window.location.reload();
-    }
+  const handleCategoryClick = (category: string) => {
+    navigate("/products", {
+      state: { selectedCategory: category.toLowerCase() },
+    });
   };
 
   return (
-    <div className="flex flex-col gap-4 text-16sm font-light font-inter">
+    <div className="text-color-light flex flex-col gap-4">
       <Link
-        className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
+        className="text-14sm xl:text-16sm font-inter font-light hover:underline hover:underline-offset-4"
         to="/products"
       >
-        Collection
+        Gallery
       </Link>
-      <Link to="/">New Arrivals</Link>
-      <Link to="/">Best Sellers</Link>
-      <Link
-        onClick={() => handleReload("/search/necklaces")}
-        className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
-        to="/search/necklaces"
-      >
-        Necklaces
-      </Link>
-      <Link
-        onClick={() => handleReload("/search/rings")}
-        className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
-        to="/search/rings"
+      <Button
+        onClick={() => handleCategoryClick("rings")}
+        className="text-14sm xl:text-16sm font-inter text-color-light h-auto justify-start rounded-none p-0 font-light hover:underline hover:underline-offset-4"
+        variant="link"
       >
         Rings
-      </Link>
-      <Link
-        onClick={() => handleReload("/search/Earrings")}
-        className="text-16sm font-light font-inter hover:underline hover:underline-offset-4"
-        to="/search/rings"
+      </Button>
+      <Button
+        onClick={() => handleCategoryClick("necklaces")}
+        className="text-14sm xl:text-16sm font-inter text-color-light h-auto justify-start rounded-none p-0 font-light hover:underline hover:underline-offset-4"
+        variant="link"
+      >
+        Necklaces
+      </Button>
+      <Button
+        onClick={() => handleCategoryClick("earrings")}
+        className="text-14sm xl:text-16sm font-inter text-color-light h-auto justify-start rounded-none p-0 font-light hover:underline hover:underline-offset-4"
+        variant="link"
       >
         Earrings
-      </Link>
+      </Button>
     </div>
   );
 };

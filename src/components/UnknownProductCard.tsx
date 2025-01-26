@@ -1,18 +1,18 @@
-import { AspectRatio } from "./ui/aspect-ratio";
 import unknownCanvas from "../assets/ui_image_placeholder 1.svg";
 
 const UnknownProductCard = () => {
   return (
-    <div className="grid grid-rows-[7fr_1fr] gap-3 md:gap-4 group w-full md:min-w-[264px] h-[510px] ">
-      <AspectRatio ratio={3 / 2}>
-        <img src={unknownCanvas} className="w-full h-full object-cover" />
-      </AspectRatio>
+    <div className="flex flex-col gap-4">
+      <img
+        src={unknownCanvas}
+        className="w-full h-[358px] md:h-[420px] xl:h-[448px] object-cover rounded-sm"
+      />
       <div className="flex justify-between md:flex-col md:gap-1 md:justify-start">
-        <span className="text-16sm md:text-14sm font-medium font-serif uppercase">
-          Lorem ipsum dolor sit.
+        <span className="text-14sm xl:text-16sm font-normal font-serif uppercase">
+          Lorem ipsum dolor sit amet.
         </span>
-        <span className="text-16sm md:text-14sm font-medium font-serif ">
-          $1075 USD
+        <span className="text-14sm xl:text-16sm font-normal font-serif uppercase">
+          $1250 <span className="text-12sm xl:text-14sm">USD</span>
         </span>
       </div>
     </div>

@@ -4,13 +4,14 @@ import HomePage from "./pages/HomePage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
-import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import ManageProductPage from "./pages/ManageProductPage";
 import SearchPage from "./pages/SearchPage";
 import GalleryPage from "./pages/GalleryPage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import ScrollToTop from "./components/ScrollToTop";
+import OrderStatusPage from "./pages/OrderStatusPage";
+import AdminProtectedRoute from "./auth/AdminProtectedRoute";
 
 const AppRoutes = () => {
   return (
@@ -66,6 +67,14 @@ const AppRoutes = () => {
 
         <Route element={<ProtectedRoute />}>
           <Route
+            path="/order-status"
+            element={
+              <Layout>
+                <OrderStatusPage />
+              </Layout>
+            }
+          />
+          <Route
             path="/user-profile"
             element={
               <Layout>
@@ -73,16 +82,9 @@ const AppRoutes = () => {
               </Layout>
             }
           />
+        </Route>
 
-          <Route
-            path="/manage-restaurant"
-            element={
-              <Layout>
-                <ManageRestaurantPage />
-              </Layout>
-            }
-          />
-
+        <Route element={<AdminProtectedRoute />}>
           <Route
             path="/manage-product"
             element={

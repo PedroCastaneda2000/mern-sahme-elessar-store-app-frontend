@@ -21,7 +21,7 @@ const OptionFilterSelect = ({
 }: Props) => {
   const handleOptionChange = (option: string) => {
     if (option === "reset") {
-      onChange(""); // Reset the filter
+      onChange("");
     } else {
       onChange(option);
     }
@@ -29,24 +29,22 @@ const OptionFilterSelect = ({
 
   return (
     <Select onValueChange={handleOptionChange} value={selectedOption || ""}>
-      <SelectTrigger className="rounded-none font-inter uppercase text-16sm justify-between w-full ">
+      <SelectTrigger className="font-inter text-14sm xl:text-16sm bg-main-lighter text-color-dark border-main-outline gap-4 rounded-sm border-opacity-10 capitalize italic shadow-sm">
         <SelectValue placeholder={placeHolder} />
       </SelectTrigger>
-      <SelectContent className="rounded-none">
-        {/* Reset Filters Option */}
+      <SelectContent className="bg-main-lighter rounded-sm">
         <SelectItem
           value="reset"
-          className="text-red-500 font-inter uppercase text-16sm mt-2"
+          className="font-inter text-14sm xl:text-16sm mt-2 italic"
         >
           Reset
         </SelectItem>
         <hr className="my-2" />
-        {/* Options */}
         {optionList.map((option) => (
           <SelectItem
             key={option}
             value={option}
-            className="font-inter uppercase text-16sm"
+            className="font-inter text-14sm xl:text-16sm text-color-dark capitalize italic"
           >
             {option}
           </SelectItem>

@@ -7,9 +7,9 @@ const CartIcon = () => {
 
   return (
     <div className="relative">
-      <img src={BagIcon} alt="Cart" className="w-4 h-4 md:w-5 md:h-5" />
+      <img src={BagIcon} alt="Cart" className="h-4 w-4 xl:h-5 xl:w-5" />
       {totalItems > 0 && (
-        <span className="absolute -bottom-1 -right-1 bg-black text-white font-serif font-normal text-10sm w-[14px] h-[14px] md:text-12sm md:w-4 md:h-4 flex items-center justify-center rounded-full">
+        <span className="text-8sm xl:text-10sm md:text-10sm bg-color-dark absolute -bottom-1 -right-1 flex size-3.5 items-center justify-center rounded-full font-serif font-normal text-white xl:size-4">
           {totalItems}
         </span>
       )}

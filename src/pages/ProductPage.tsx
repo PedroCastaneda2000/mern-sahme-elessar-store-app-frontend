@@ -9,6 +9,7 @@ import { useGetProduct } from "@/api/ProductApi";
 import { useParams } from "react-router-dom";
 import { addToCart } from "@/store/cart/CartSlice";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import ProductFeatures from "@/components/ProductFeatures";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -16,10 +17,8 @@ const ProductPage = () => {
   const dispatch = useDispatch();
 
   const handleAddToCartAndOpenDrawer = (product: Product) => {
-    // Dispatch addToCart to add the product to the cart
     dispatch(addToCart({ ...product, quantity: 1 }));
 
-    // Set the last claimed product in the drawer slice
     dispatch(
       setLastAddedItem({
         _id: product._id,
@@ -28,27 +27,35 @@ const ProductPage = () => {
         imageUrl: product.imageUrl,
         material: product.material,
         stone: product.stone,
-      })
+      }),
     );
 
-    // Open the drawer
     dispatch(openNotification());
   };
 
   if (isLoading || !product) return <p>Loading...</p>;
 
   return (
-    <div className="grid md:grid-cols-[4fr_2fr] gap-6 w-full">
-      <AspectRatio ratio={1 / 1}>
+    <div className="grid w-full gap-6 md:grid-cols-[6fr_4fr] md:gap-y-12">
+      <AspectRatio ratio={1 / 1} className="shadow-sm">
         <img
           src={product.imageUrl}
-          className="object-cover h-full w-full max-h-[672px]"
+          className="h-full w-full rounded-sm object-cover"
         />
       </AspectRatio>
-      <ProductDetails
-        product={product}
-        addToCart={handleAddToCartAndOpenDrawer}
-      />
+      <div className="flex flex-col gap-8">
+        <ProductDetails
+          product={product}
+          addToCart={handleAddToCartAndOpenDrawer}
+        />
+        <div className="md:hidden xl:block">
+          <ProductFeatures />
+        </div>
+      </div>
+
+      <div className="hidden md:col-span-2 md:block xl:hidden">
+        <ProductFeatures />
+      </div>
     </div>
   );
 };

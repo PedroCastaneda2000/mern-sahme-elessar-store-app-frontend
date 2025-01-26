@@ -25,6 +25,7 @@ export default {
         "14sm": ["0.875rem", "1.5", "0rem"],
         "12sm": ["0.75rem", "1.5", "0rem"],
         "10sm": ["0.625rem", "1.5", "0rem"],
+        "8sm": ["0.625rem", "1.5", "0rem"],
 
         "18lk": ["1.125rem", "1.5", "0rem"],
         "16lk": ["1rem", "1.5", "0rem"],
@@ -33,11 +34,33 @@ export default {
         "14lb": ["0.875rem", "1.5", "0.03rem"],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        // lg: "var(--radius)",
+        // md: "calc(var(--radius) - 2px)",
+        // sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // MAIN
+        main: {
+          primary: "#44333b",
+          secondary: "#2c3331", // 2b3531
+          light: "#fdfaf9",
+          lighter: "#fffefe",
+          outline: "#4D3842",
+        },
+        button: {
+          primary: "#7F565C",
+          "primary-hover": "#8D6066",
+          light: "#fdfaf9",
+          "light-hover": "#fffefe",
+          destruction: "#3a2128",
+          "destruction-hover": "#563C3F",
+        },
+        color: {
+          light: "#fffefe",
+          dark: "#333333",
+        },
+
+        // SHADCN
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -12,41 +12,30 @@ const ImageSection = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div>
-        <h2 className="text-16sm font-inter font-normal uppercase">Image</h2>
-      </div>
-
-      <div className="flex flex-col gap-8">
-        {/* {existingImageUrl && (
-          <AspectRatio ratio={16 / 9}>
-            <img
-              src={existingImageUrl}
-              className="rounded-md object-cover h-full w-full"
-            />
-          </AspectRatio>
-        )} */}
-        <FormField
-          control={control}
-          name="imageFile"
-          render={({ field }) => (
-            <FormItem className="font-inter text-16sm font-normal uppercase">
-              <FormControl>
-                <Input
-                  className="bg-white rounded-none text-14sm uppercase"
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                  onChange={(event) =>
-                    field.onChange(
-                      event.target.files ? event.target.files[0] : null
-                    )
-                  }
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        ></FormField>
-      </div>
+      <h1 className="font-inter text-14sm xl:text-16sm font-normal uppercase">
+        Image
+      </h1>
+      <FormField
+        control={control}
+        name="imageFile"
+        render={({ field }) => (
+          <FormItem className="font-inter text-14sm xl:text-16sm font-normal">
+            <FormControl>
+              <Input
+                className="text-color-dark border-main-outline text-14sm xl:text-16sm font-inter bg-main-lighter h-11 rounded-sm border-opacity-10 italic xl:max-w-[408px]"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                onChange={(event) =>
+                  field.onChange(
+                    event.target.files ? event.target.files[0] : null,
+                  )
+                }
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      ></FormField>
     </div>
   );
 };

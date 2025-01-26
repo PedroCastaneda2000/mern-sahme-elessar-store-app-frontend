@@ -7,26 +7,6 @@ export type User = {
   country: string;
 };
 
-export type MenuItem = {
-  _id: string;
-  name: string;
-  price: number;
-};
-
-export type Restaurant = {
-  _id: string;
-  user: string;
-  restaurantName: string;
-  city: string;
-  country: string;
-  deliveryPrice: number;
-  estimatedDeliveryTime: number;
-  cuisines: string[];
-  menuItems: MenuItem[];
-  imageUrl: string;
-  lastUpdated: string;
-};
-
 export type Product = {
   _id: string;
   name: string;
@@ -55,4 +35,33 @@ export type Products = {
     page: number;
     pages: number;
   };
+};
+
+export type OrderStatus =
+  | "placed"
+  | "paid"
+  | "inProgress"
+  | "outForDelivery"
+  | "delivered";
+
+export type Order = {
+  _id: string;
+  user: User;
+  cartItems: {
+    productId: string;
+    name: string;
+    quantity: string;
+    imageUrl: string;
+    material: string;
+    stone: string;
+  }[];
+  deliveryDetails: {
+    email: string;
+    name: string;
+    addressLine1: string;
+    city: string;
+  };
+  totalAmount: number;
+  status: OrderStatus;
+  createdAt: string;
 };

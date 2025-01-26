@@ -1,6 +1,5 @@
 import { Product } from "@/types";
 import { Link } from "react-router-dom";
-import { AspectRatio } from "./ui/aspect-ratio";
 
 type Props = {
   product: Product;
@@ -10,22 +9,20 @@ const ProductCard = ({ product }: Props) => {
   return (
     <Link
       to={`/details/${product._id}`}
-      className="grid grid-rows-[7fr_1fr] gap-3 md:gap-4 group min-w-[168px] md:min-w-[264px] h-[273px] md:h-[510px] "
+      className="text-color-dark flex flex-col gap-2 hover:underline hover:underline-offset-4 md:gap-4"
     >
-      <AspectRatio ratio={3 / 2}>
-        <img src={product.imageUrl} className="w-full h-full object-cover" />
-      </AspectRatio>
+      <img
+        src={product.imageUrl}
+        className="h-[288px] min-w-[168px] rounded-sm object-cover md:h-[384px] xl:h-[448px]"
+      />
       <div className="flex flex-col gap-1">
-        <span className="text-10sm md:text-14sm font-medium font-serif uppercase">
+        <span className="text-10sm md:text-12sm xl:text-14sm whitespace-normal break-words font-serif font-medium uppercase">
           {product.name}
         </span>
-        <span className="text-10sm md:text-14sm font-medium font-serif ">
-          ${(product.price / 100).toFixed(0)} USD
+        <span className="text-10sm md:text-14sm xl:text-16sm font-serif font-medium">
+          ${(product.price / 100).toFixed(0)}{" "}
+          <span className="text-8sm md:text-12sm xl:text-14sm">USD</span>
         </span>
-        <span>{product.material}</span>
-        <span>{product.stone}</span>
-        <span>{product.category}</span>
-        <span>{product.status}</span>
       </div>
     </Link>
   );

@@ -15,9 +15,9 @@ import { categoryList } from "@/config/product-options-config";
 import { useFormContext } from "react-hook-form";
 
 const CategorySection = () => {
-  const { control, setValue, watch } = useFormContext(); // Watch the form data and set value
+  const { control, setValue, watch } = useFormContext();
 
-  const selectedCategory = watch("category"); // Watch the material value
+  const selectedCategory = watch("category");
 
   return (
     <div>
@@ -27,25 +27,25 @@ const CategorySection = () => {
         render={({ field }) => (
           <FormItem>
             <div className="flex flex-col gap-2">
-              <FormLabel className="font-inter text-16sm font-normal uppercase">
+              <FormLabel className="font-inter text-14sm xl:text-16sm font-normal uppercase">
                 category
               </FormLabel>
               <Select
-                value={selectedCategory} // Bind the selected value
+                value={selectedCategory}
                 onValueChange={(value) => {
-                  setValue("category", value); // Update form value on selection change
-                  field.onChange(value); // Update react-hook-form value
+                  setValue("category", value);
+                  field.onChange(value);
                 }}
               >
-                <SelectTrigger className="bg-white rounded-none">
+                <SelectTrigger className="text-color-dark border-main-outline text-14sm xl:text-16sm font-inter bg-main-lighter h-11 rounded-sm border-opacity-10 capitalize italic">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-main-lighter rounded-sm">
                   {categoryList.map((categoryItem) => (
                     <SelectItem
                       key={categoryItem}
                       value={categoryItem}
-                      className="uppercase text-16sm"
+                      className="text-14sm xl:text-16sm font-inter capitalize italic"
                     >
                       {categoryItem}
                     </SelectItem>
