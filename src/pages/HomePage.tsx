@@ -24,7 +24,7 @@ const HomePage = () => {
           legends.
         </span>
       </div>
-      <div className="flex flex-col gap-4 md:gap-6 xl:gap-8">
+      <div className="flex flex-col gap-6 xl:gap-8">
         <div className="grid grid-cols-3 gap-x-3.5 md:gap-x-[26px] xl:gap-x-9">
           <button
             key="rings"
