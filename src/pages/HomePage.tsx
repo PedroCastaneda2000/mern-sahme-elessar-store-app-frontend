@@ -71,7 +71,7 @@ const HomePage = () => {
           </button>
         </div>
         <div className="relative">
-          <span className="text-color-light text-20md xl:text-28md bg-red absolute left-4 top-4 w-[358px] font-serif font-light uppercase xl:w-[512px]">
+          <span className="text-color-light text-20md xl:text-28md bg-red absolute left-4 top-4 max-w-[336px] font-serif font-light uppercase xl:w-[512px]">
             From the Mediterranean Vaults...
           </span>
           <Button
@@ -85,7 +85,7 @@ const HomePage = () => {
             className="h-[358px] w-full rounded-sm object-cover md:h-[448px] xl:h-[576px]"
             src={bottomCanvas}
           />
-          <span className="text-color-light text-20md xl:text-28md bg-red absolute bottom-4 right-4 w-[358px] text-right font-serif font-light uppercase xl:w-[512px]">
+          <span className="text-color-light text-20md xl:text-28md bg-red absolute bottom-4 right-4 h-auto max-w-[336px] whitespace-normal break-words text-right font-serif font-light uppercase xl:w-[512px]">
             The Tempestuous Tidal Stone of Poseidon
           </span>
         </div>
